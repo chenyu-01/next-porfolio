@@ -1,3 +1,16 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "css.customData": [".vscode/tailwind.json"],
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#bf7124",
+    "titleBar.activeForeground": "#FFFFFF",
+    "titleBar.inactiveBackground": "#bf7124",
+    "titleBar.inactiveForeground": "#FFFFFF",
+    "titleBar.border": "#bf7124",
+    "activityBar.foreground": "#bf7124",
+    "tab.activeBorder": "#bf7124",
+    "iLoveWorkSpaceColors": true,
+    "iLoveWorkSpaceRandom": false,
+    "useWorkspaceLite": true
+  }
 }
