@@ -40,12 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning={true} lang="en">
-      <body
-        className={cn(
-          'container mx-auto flex max-w-7xl flex-col',
-          fontSans.variable
-        )}
-      >
+      <body className={cn('flex max-w-7xl flex-col', fontSans.variable)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -70,13 +65,13 @@ export default function RootLayout({
                 ))}
               </ul>
             </nav>
-            <div className="flex items-center">
+            <div className="flex items-center justify-between">
               <Input className="w-40" placeholder="Search" type="search" />
               <ModeToggle />
             </div>
           </header>
-          <main>{children}</main>
-          <footer>
+          <main className="container">{children}</main>
+          <footer className="flex justify-center">
             <p>&copy; {new Date().getFullYear()} My Portfolio</p>
           </footer>
         </ThemeProvider>
