@@ -1,10 +1,8 @@
 // app/posts/[slug]/page.tsx
-import ReactMarkdown from 'react-markdown';
-import { loader } from '@/app/posts/slug.loader';
+import MarkDownLoader from '@/components/MarkDownLoader';
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
-  const markdown = await loader({ slug: params.slug });
-  return <ReactMarkdown>{markdown}</ReactMarkdown>;
+  return <MarkDownLoader slug={params.slug} />;
 };
 
 export default PostPage;
