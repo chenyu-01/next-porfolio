@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkFrontmatter from 'remark-frontmatter';
 import path from 'path';
 import CodeBlock from '@/components/CodeBlock';
-export default function MarkDownLoader({ slug }: { slug: string }) {
+export default async function MarkDownLoader({ slug }: { slug: string }) {
   const postsDirectory = path.join(process.cwd(), 'public', 'posts');
   const filePath = path.join(postsDirectory, `${slug}.md`);
   // check if the file exists
@@ -13,12 +13,12 @@ export default function MarkDownLoader({ slug }: { slug: string }) {
     throw new Error(`File not found: ${filePath}`);
   }
   if (slug === 'index') {
-    redirect('/');
+    redirect('/posts');
   }
   const markdown = fs.readFileSync(filePath, 'utf8');
   return (
     <ReactMarkdown
-      className={`prose dark:prose-invert`}
+      className={`prose mx-2 max-w-[90%] dark:prose-invert`}
       remarkPlugins={[remarkFrontmatter]}
       components={{
         pre: ({ children }) => (

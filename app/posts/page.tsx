@@ -5,13 +5,26 @@ import Link from 'next/link';
 const postsDirectory = path.join(process.cwd(), 'public', 'posts');
 // get list of all markdown filenames and convert to slugs
 const filenames = fs.readdirSync(postsDirectory);
+const posts = filenames.map((filename) => {
+  const slug = filename.replace(/\.md$/, '');
+  if (slug === 'index') {
+    return;
+  }
+  return {
+    slug,
+    filename,
+  };
+});
 export default function RecentPosts() {
   return (
     <div>
       <h1>Recent Posts</h1>
       <ul>
-        {filenames.map((filename) => {
-          const slug = filename.replace(/\.md$/, '');
+        {posts.map((post) => {
+          if (!post) {
+            return;
+          }
+          const slug = post.slug;
           return (
             <li key={slug}>
               <Link href={`/posts/${slug}`}>{slug}</Link>
