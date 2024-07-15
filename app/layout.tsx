@@ -21,7 +21,7 @@ const allLinks = [
     text: 'Home',
   },
   {
-    id: 'about',
+    id: 'posts/about',
     text: 'About',
   },
   {

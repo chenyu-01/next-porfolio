@@ -17,7 +17,6 @@ async function ProjectsList() {
   }
 
   const allRepos = (await response.json()) as GithubRepo[];
-  console.log(allRepos);
   // sort by last commit time
   const repos = allRepos
     .filter((repo) => !repo.fork)

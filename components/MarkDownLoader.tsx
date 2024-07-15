@@ -2,6 +2,7 @@
 import fs from 'fs';
 import { redirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
+import remarkFrontmatter from 'remark-frontmatter';
 import path from 'path';
 import CodeBlock from '@/components/CodeBlock';
 export default async function MarkDownLoader({ slug }: { slug: string }) {
@@ -18,6 +19,7 @@ export default async function MarkDownLoader({ slug }: { slug: string }) {
   return (
     <ReactMarkdown
       className={`prose dark:prose-invert`}
+      remarkPlugins={[remarkFrontmatter]}
       components={{
         pre: ({ children }) => (
           <pre className="not-prose overflow-x-hidden">{children}</pre>
