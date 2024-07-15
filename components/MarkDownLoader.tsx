@@ -1,4 +1,4 @@
-// app/posts/slug.loader.ts
+// @/components/MarkDownLoader
 import fs from 'fs';
 import { redirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
@@ -19,10 +19,13 @@ export default async function MarkDownLoader({ slug }: { slug: string }) {
     <ReactMarkdown
       className={`prose dark:prose-invert`}
       components={{
-        code: ({ node, inline, className, children, ...props }) => {
+        pre: ({ children }) => (
+          <pre className="not-prose overflow-x-hidden">{children}</pre>
+        ),
+        code: ({ node, className, children, ...props }) => {
           const match = /language-(\w+)/.exec(className || '');
           const language = match ? match[1] : '';
-          return !inline && match ? (
+          return match ? (
             <CodeBlock
               language={language}
               value={String(children).replace(/\n$/, '')}

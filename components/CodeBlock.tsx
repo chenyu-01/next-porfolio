@@ -1,12 +1,13 @@
-// CodeBlock.tsx
+// @/components/CodeBlock
 'use client';
 import React from 'react';
-import SyntaxHighLighter from 'react-syntax-highlighter';
-function copyCode(value: string) {
-  navigator.clipboard.writeText(value);
-  alert('copied to clipboard');
-}
-
+import { useTheme } from 'next-themes';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import {
+  duotoneDark,
+  duotoneLight,
+} from 'react-syntax-highlighter/dist/esm/styles/prism';
+import CopyButton from '@/components/CopyButton';
 function CodeBlock({
   language,
   value,
@@ -15,20 +16,28 @@ function CodeBlock({
   language: string;
   value: string;
 }) {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
     <>
-      <div className="not-prose flex items-center justify-between text-xs">
+      <div className="flex w-full items-center justify-between rounded bg-gray-300 px-2 text-lg dark:bg-gray-600">
         <p>{language}</p>
-        <p onClick={() => copyCode(value)}>Copy</p>
+        <CopyButton value={value} />
       </div>
-      <SyntaxHighLighter
-        className="bg-inherit"
+      <SyntaxHighlighter
+        PreTag={'div'}
         language={language}
-        PreTag="div"
+        wrapLongLines
+        className="not-prose rounded"
+        style={isDark ? duotoneDark : duotoneLight}
+        customStyle={{
+          margin: 0,
+        }}
         {...props}
       >
         {value}
-      </SyntaxHighLighter>
+      </SyntaxHighlighter>
     </>
   );
 }

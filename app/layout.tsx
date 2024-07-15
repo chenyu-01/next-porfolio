@@ -29,7 +29,7 @@ const allLinks = [
     text: 'Projects',
   },
   {
-    id: 'blog',
+    id: 'posts',
     text: 'Blog',
   },
 ];
@@ -47,7 +47,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header className="sticky top-0 flex w-full items-center justify-between bg-gray-200 px-5 text-xl sm:font-semibold md:static md:bg-inherit dark:bg-gray-700 md:dark:bg-inherit">
+          <header className="sticky top-0 flex w-full items-center justify-between bg-gray-200 px-5 text-xl dark:bg-gray-700 sm:font-semibold md:static md:bg-inherit md:dark:bg-inherit">
             <nav>
               <ul className="flex items-center">
                 <Link href={'/'} className="menu-hover mr-12 p-5">
