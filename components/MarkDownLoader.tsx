@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkFrontmatter from 'remark-frontmatter';
 import path from 'path';
 import CodeBlock from '@/components/CodeBlock';
-export default async function MarkDownLoader({ slug }: { slug: string }) {
+export default function MarkDownLoader({ slug }: { slug: string }) {
   const postsDirectory = path.join(process.cwd(), 'public', 'posts');
   const filePath = path.join(postsDirectory, `${slug}.md`);
   // check if the file exists

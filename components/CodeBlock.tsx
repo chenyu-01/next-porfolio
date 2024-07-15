@@ -1,6 +1,6 @@
 // @/components/CodeBlock
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
@@ -8,6 +8,7 @@ import {
   duotoneLight,
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import CopyButton from '@/components/CopyButton';
+
 function CodeBlock({
   language,
   value,
@@ -17,6 +18,16 @@ function CodeBlock({
   value: string;
 }) {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   const isDark = theme === 'dark';
 
   return (
