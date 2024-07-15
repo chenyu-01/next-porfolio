@@ -87,19 +87,19 @@ If you know how this works, then you can understand the concept of the asymmetri
 
 In the asymmetric wayk, the server indeed encode header, payload, then sign out signature just like we have explained in symmetric way. The difference is not only the public key that is used to verify the token, but also the process of verification is different. Here is the process:
 
-1. When generating the JWT, the `issuer` will use the private key to sign the hash of the header and payload with algorithm specified in header. The signature is encoded together with the header and payload using `base64`, resulting in a Json Web Token that sends to client.
+1. When generating the JWT, the issuer will use the private key to sign the hash of the header and payload with algorithm specified in header. The signature is encoded together with the header and payload using `base64`, resulting in a Json Web Token that sends to client.
 
-2. When recieving JWT, the `verifier` will decode the JWT using `base64`. The verifier will get the header, payload, and signature from this process.
+2. When recieving JWT, the verifier will decode the JWT using `base64`. The verifier will get the header, payload, and signature from this process.
 
-3. The `verifier` will get the original hash by decrypting the signature with the specified algorithm in header with private key.
+3. The verifier will get the original hash by decrypting the signature with the specified algorithm in header with private key.
 
-4. The `verifier` will calculate the original hash of the header and payload again.
+4. The verifier will calculate the original hash of the header and payload again.
 
-5. The `verifier` will compare the original hash with the revealed hash to verify if this is a valid signature.
+5. The verifier will compare the original hash with the revealed hash to verify if this is a valid signature.
 
-The main difference between the symmetric and asymmetric way is that the `verifier` is trying to compare hash. And they are using different algorithms to sign the JWT.
+The main difference between the symmetric and asymmetric way is that the verifier is trying to compare hash. And they are using different algorithms to sign the JWT.
 
-Notice how we switched our terminology from `server` and `client` to `issuer` and `verifier`. This is because the `issuer` is the one who creates the JWT and the `verifier` is the one who verifies the JWT. The `issuer` and `verifier` can be the same entity or different entities. When in distributed environment, the `issuer` and `verifier` are usually different entities.
+Notice how we switched our terminology from server and client to issuer and verifier. This is because the issuer is the one who creates the JWT and the verifier is the one who verifies the JWT. The issuer and verifier can be the same entity or different entities. When in distributed environment, the issuer and verifier are usually different entities.
 
 ## A clarification on the concept of asymmetric encryption
 
