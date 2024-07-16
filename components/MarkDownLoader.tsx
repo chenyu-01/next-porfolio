@@ -1,21 +1,13 @@
 // @/components/MarkDownLoader
-import fs from 'fs';
-import { redirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkFrontmatter from 'remark-frontmatter';
-import path from 'path';
 import CodeBlock from '@/components/CodeBlock';
-export default async function MarkDownLoader({ slug }: { slug: string }) {
-  const postsDirectory = path.join(process.cwd(), 'public', 'posts');
-  const filePath = path.join(postsDirectory, `${slug}.md`);
-  // check if the file exists
-  if (!fs.existsSync(filePath)) {
-    throw new Error(`File not found: ${filePath}`);
-  }
-  if (slug === 'index') {
-    redirect('/posts');
-  }
-  const markdown = fs.readFileSync(filePath, 'utf8');
+
+export default async function MarkDownLoader({
+  markdown,
+}: {
+  markdown: string;
+}) {
   return (
     <ReactMarkdown
       className={`prose mx-2 max-w-[90%] dark:prose-invert`}
