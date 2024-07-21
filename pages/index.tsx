@@ -1,12 +1,8 @@
-// @/pages/index.tsx
-import ReactMarkdown from 'react-markdown';
+import Layout from '@/components/layout';
+import type { NextPageWithLayout } from './_app';
 
-const markdown = `Here is some inline code: \`const x = 10;\``;
-export default function Page() {
-  return (
-    <div>
-      <h1>Page</h1>
-      <ReactMarkdown>{markdown}</ReactMarkdown>
-    </div>
-  );
-}
+const Page: NextPageWithLayout = () => {
+  return <p>hello world</p>;
+};
+Page.getLayout = (page) => <Layout>{page}</Layout>;
+export default Page;

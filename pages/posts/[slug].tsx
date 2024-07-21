@@ -43,9 +43,15 @@ const extractTOC = (html: string): TocLink[] => {
 
   return toc;
 };
-
-const PostPage = async ({ params }: { params: { slug: string } }) => {
+export async function getStaticProps(params: { slug: string }) {
   const doc = markdownContent(params.slug);
+  return {
+    props: {
+      doc,
+    },
+  };
+}
+const PostPage = async ({ doc }: { doc: string }) => {
   const { jsx, html } = await MarkDownLoader({ markdown: doc });
 
   const toc = extractTOC(html);
