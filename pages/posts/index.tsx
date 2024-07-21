@@ -1,37 +1,36 @@
-import path from 'path';
-import fs from 'fs';
+import { GetStaticProps } from 'next';
 import Link from 'next/link';
-// get list of all markdown files in the posts directory
-const postsDirectory = path.join(process.cwd(), 'public', 'posts');
-// get list of all markdown filenames and convert to slugs
-const filenames = fs.readdirSync(postsDirectory);
-const posts = filenames.map((filename) => {
-  const slug = filename.replace(/\.md$/, '');
-  if (slug === 'index') {
-    return;
-  }
-  return {
-    slug,
-    filename,
-  };
-});
-export default function RecentPosts() {
+import { getAllPosts } from '@/lib/posts';
+
+interface Post {
+  slug: string;
+  filename: string;
+}
+
+interface RecentPostsProps {
+  posts: Post[];
+}
+
+export default function RecentPosts({ posts }: RecentPostsProps) {
   return (
     <div>
       <h1>Recent Posts</h1>
       <ul>
-        {posts.map((post) => {
-          if (!post) {
-            return;
-          }
-          const slug = post.slug;
-          return (
-            <li key={slug}>
-              <Link href={`/posts/${slug}`}>{slug}</Link>
-            </li>
-          );
-        })}
+        {posts.map((post) => (
+          <li key={post.slug}>
+            <Link href={`/posts/${post.slug}`}>{post.slug}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = getAllPosts();
+  return {
+    props: {
+      posts,
+    },
+  };
+};

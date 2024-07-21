@@ -62,7 +62,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </header>
         <main className="container">{children}</main>
         <footer className="flex justify-center">
-          <p>&copy; {new Date().getFullYear()} My Portfolio</p>
+          <p>&copy; {new Date().getFullYear()} Chen Yu&apos;s Portfolio</p>
         </footer>
       </ThemeProvider>
     </div>

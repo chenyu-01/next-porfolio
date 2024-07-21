@@ -1,9 +1,10 @@
 import React from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import MarkDownLoader from '@/components/MarkDownLoader';
+import TableOfContents, { TOCItem } from '@/components/TableOfContents';
+import generateTOC from '@/lib/toc';
 import fs from 'fs';
 import path from 'path';
-
 const postsDirectory = path.join(process.cwd(), 'public', 'posts');
 
 const markdownContent = (slug: string) => {
@@ -32,26 +33,29 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug as string;
   const content = markdownContent(slug);
-
+  const toc = generateTOC(content);
   return {
     props: {
       content,
+      toc,
     },
   };
 };
 
-const PostPage = ({ content }: { content: string }) => {
+const PostPage = ({ content, toc }: { content: string; toc: TOCItem[] }) => {
   return (
     <section className="grid grid-cols-6 gap-16">
-      <main className={'col-span-6 md:col-span-4'}>
+      <main
+        className={toc.length > 0 ? 'col-span-6 md:col-span-4' : 'col-span-6'}
+      >
         <MarkDownLoader markdown={content} />
       </main>
-      {/* <aside className="col-span-2 hidden md:block">
+      <aside className="col-span-2 hidden md:block">
         <div className="sticky top-8">
-          <p className="mb-2 font-semibold">Table of Contents</p>
-          <nav>{toc.length > 0 && <TableOfContents links={toc} />}</nav>
+          <p className="mb-2 text-2xl font-semibold">Table of Contents</p>
+          <TableOfContents toc={toc} />
         </div>
-      </aside> */}
+      </aside>
     </section>
   );
 };

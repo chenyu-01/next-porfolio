@@ -1,12 +1,25 @@
-// @/app/posts/%5Bslug%5D/MarkDownLoader
 import ReactMarkdown from 'react-markdown';
 import remarkFrontmatter from 'remark-frontmatter';
+import rehypeSlug from 'rehype-slug';
 import CodeBlock from '@/components/CodeBlock';
-export default function MarkDownLoader({ markdown }: { markdown: string }) {
+
+interface MarkDownLoaderProps {
+  markdown: string;
+  tocOptions?: {
+    heading?: string;
+    maxDepth?: number;
+    tight?: boolean;
+    ordered?: boolean;
+    prefix?: string;
+  };
+}
+
+export default function MarkDownLoader({ markdown }: MarkDownLoaderProps) {
   return (
     <ReactMarkdown
       className={`prose mx-2 max-w-[90%] dark:prose-invert`}
       remarkPlugins={[remarkFrontmatter]}
+      rehypePlugins={[rehypeSlug]}
       components={{
         pre: ({ children }) => (
           <pre className="not-prose overflow-x-hidden">{children}</pre>

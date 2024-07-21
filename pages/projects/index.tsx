@@ -1,30 +1,12 @@
+import { GetStaticProps } from 'next';
 import Link from 'next/link';
+import { getProjects, GithubRepo } from '../../lib/projects';
 
-type GithubRepo = {
-  id: number;
-  name: string;
-  description: string | null;
-  html_url: string;
-  stargazers_count: number;
-  fork: boolean;
-  updated_at: string;
-};
+interface ProjectsListProps {
+  repos: GithubRepo[];
+}
 
-async function ProjectsList() {
-  const response = await fetch('https://api.github.com/users/chenyu-01/repos');
-  if (!response.ok) {
-    throw new Error('Failed to fetch repos');
-  }
-
-  const allRepos = (await response.json()) as GithubRepo[];
-  // sort by last commit time
-  const repos = allRepos
-    .filter((repo) => !repo.fork)
-    .sort((a, b) => {
-      return (
-        new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
-      );
-    });
+export default function ProjectsList({ repos }: ProjectsListProps) {
   return (
     <section>
       <ul>
@@ -51,4 +33,13 @@ async function ProjectsList() {
     </section>
   );
 }
-export default ProjectsList;
+
+export const getStaticProps: GetStaticProps<ProjectsListProps> = async () => {
+  const repos = await getProjects();
+  return {
+    props: {
+      repos,
+    },
+    revalidate: 3600, // Revalidate every hour
+  };
+};
