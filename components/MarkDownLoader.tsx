@@ -2,13 +2,8 @@
 import ReactMarkdown from 'react-markdown';
 import remarkFrontmatter from 'remark-frontmatter';
 import CodeBlock from '@/components/CodeBlock';
-import { renderToStaticMarkup } from 'react-dom/server';
-export default async function MarkDownLoader({
-  markdown,
-}: {
-  markdown: string;
-}) {
-  const jsx = (
+export default function MarkDownLoader({ markdown }: { markdown: string }) {
+  return (
     <ReactMarkdown
       className={`prose mx-2 max-w-[90%] dark:prose-invert`}
       remarkPlugins={[remarkFrontmatter]}
@@ -39,7 +34,4 @@ export default async function MarkDownLoader({
       {markdown}
     </ReactMarkdown>
   );
-
-  const html = renderToStaticMarkup(jsx);
-  return { jsx, html };
 }
