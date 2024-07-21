@@ -1,42 +1,8 @@
-// @/components/TocLinks.jsx
+// @/components/TableOfContents
 'use client';
 import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import rehypeParse from 'rehype-parse';
-import { unified } from 'unified';
-import { visit } from 'unist-util-visit';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-// todo: change this to render the toc from the jsx
-// const generateTOC = (markdown: string) => {
-//   const processor = unified().use(rehypeParse, { fragment: true });
-
-//   const ast = processor.parse(markdown);
-
-//   const toc = [] as TocLink[];
-//   visit(ast, 'element', (node) => {
-//     if (
-//       node.tagName === 'h1' ||
-//       node.tagName === 'h2' ||
-//       node.tagName === 'h3'
-//     ) {
-//       const id = node.properties.id
-//       let text = '';
-//       if (
-//         node.children &&
-//         node.children.length > 0 &&
-//         node.children[0].type === 'text'
-//       ) {
-//         text = node.children[0].value;
-//       }
-//       const depth = parseInt(node.tagName[1]); // h1 -> 1, h2 -> 2, h3 -> 3
-
-//       toc.push({ id, text, depth });
-//     }
-//   });
-
-//   return toc;
-// };
 export type TocLink = {
   id: string;
   text: string;
@@ -85,4 +51,33 @@ const TocLinks = ({
   );
 };
 
-export default TocLinks;
+export default function TableOfContents({ links }: { links: TocLink[] }) {
+  const [activeId, setActiveId] = useState('');
+  const [mounted, setMounted] = useState(typeof window !== 'undefined');
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '0% 0% -80% 0%' }
+    );
+    document.querySelectorAll('h1, h2, h3').forEach((heading) => {
+      observer.observe(heading);
+    });
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  return (
+    <nav>
+      {mounted && <TocLinks links={links} level={0} activeId={activeId} />}
+    </nav>
+  );
+}
