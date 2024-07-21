@@ -1,8 +1,8 @@
-// app/posts/[slug]/page.tsx
+// @/pages/posts/[slug].tsx
 import React from 'react';
 import { Suspense } from 'react';
 import type { TocLink } from '@/components/TableOfContents';
-import MarkDownLoader from '@/app/posts/[slug]/MarkDownLoader';
+import MarkDownLoader from '@/components/MarkDownLoader';
 import fs from 'fs';
 import path from 'path';
 import { redirect } from 'next/navigation';

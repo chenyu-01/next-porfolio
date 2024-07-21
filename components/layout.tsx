@@ -1,5 +1,5 @@
-// @/app/layout.tsx
-import { ThemeProvider } from '../components/ThemeProvider';
+// @/components/layout.tsx
+import { ThemeProvider } from '@/components/ThemeProvider';
 import { Inter as FontSans } from 'next/font/google';
 import { Input } from '@/components/ui/input';
 import { ModeToggle } from '@/components/ThemeModeToggle';

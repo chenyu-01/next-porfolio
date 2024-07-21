@@ -1,4 +1,4 @@
-// @/app/page.tsx
+// @/pages/index.tsx
 import ReactMarkdown from 'react-markdown';
 
 const markdown = `Here is some inline code: \`const x = 10;\``;
