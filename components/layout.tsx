@@ -56,7 +56,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </ul>
           </nav>
           <div className="flex items-center justify-between">
-            <Input className="w-40" placeholder="Search" type="search" />
+            <Input
+              className="w-50 mr-2 bg-card"
+              placeholder="Search"
+              type="search"
+            />
             <ModeToggle />
           </div>
         </header>

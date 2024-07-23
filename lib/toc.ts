@@ -1,7 +1,16 @@
 import type { TOCItem } from '@/components/TableOfContents';
 
 const generateTOC = (markdown: string) => {
-  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+  // if in frontmatter, there is no toc:true, return empty list
+  const frontMatterContent = markdown.match(/---([\s\S]*?)---/);
+  const frontmatterTOC =
+    frontMatterContent &&
+    frontMatterContent.some((content) => content.includes('toc: true'));
+  if (!frontmatterTOC) {
+    return [];
+  }
+  // regex to match headings, exclude h1
+  const headingRegex = /^(#{2,6})\s+(.+)$/gm;
   const toc: TOCItem[] = [];
   let match;
 

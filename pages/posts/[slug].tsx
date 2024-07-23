@@ -50,12 +50,7 @@ const PostPage = ({ content, toc }: { content: string; toc: TOCItem[] }) => {
       >
         <MarkDownLoader markdown={content} />
       </main>
-      <aside className="col-span-2 hidden md:block">
-        <div className="sticky top-8">
-          <p className="mb-2 text-2xl font-semibold">Table of Contents</p>
-          <TableOfContents toc={toc} />
-        </div>
-      </aside>
+      {toc.length > 0 && <TableOfContents toc={toc} />}
     </section>
   );
 };

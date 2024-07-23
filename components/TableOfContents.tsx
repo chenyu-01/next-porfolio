@@ -55,7 +55,14 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
     );
   };
 
-  return <nav className="toc">{renderTOCItems(toc)}</nav>;
+  return (
+    <aside className="col-span-2 hidden md:block">
+      <div className="sticky top-8 rounded-xl bg-card p-4">
+        <p className="mb-2 text-2xl font-semibold">In this Article</p>
+        <nav className="toc">{renderTOCItems(toc)}</nav>
+      </div>
+    </aside>
+  );
 };
 
 export default TableOfContents;
