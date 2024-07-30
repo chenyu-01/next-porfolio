@@ -8,7 +8,7 @@ export function getAllPosts() {
   const posts = filenames
     .map((filename) => {
       const slug = filename.replace(/\.md$/, '');
-      if (slug === 'index') {
+      if (slug === 'index' || slug === 'about') {
         return null;
       }
       return {
@@ -17,6 +17,13 @@ export function getAllPosts() {
       };
     })
     .filter(Boolean); // This removes any null entries
-
   return posts;
 }
+export const markdownContent = (slug: string) => {
+  const filePath = path.join(postsDirectory, `${slug}.md`);
+  // check if the file exists
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`File not found: ${filePath}`);
+  }
+  return fs.readFileSync(filePath, 'utf8');
+};
