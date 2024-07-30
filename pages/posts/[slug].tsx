@@ -3,18 +3,10 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import MarkDownLoader from '@/components/MarkDownLoader';
 import TableOfContents, { TOCItem } from '@/components/TableOfContents';
 import generateTOC from '@/lib/toc';
+import { markdownContent } from '@/lib/posts';
 import fs from 'fs';
 import path from 'path';
 const postsDirectory = path.join(process.cwd(), 'public', 'posts');
-
-const markdownContent = (slug: string) => {
-  const filePath = path.join(postsDirectory, `${slug}.md`);
-  // check if the file exists
-  if (!fs.existsSync(filePath)) {
-    throw new Error(`File not found: ${filePath}`);
-  }
-  return fs.readFileSync(filePath, 'utf8');
-};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const filenames = fs.readdirSync(postsDirectory);
