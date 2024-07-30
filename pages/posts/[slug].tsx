@@ -39,6 +39,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       content,
       toc,
     },
+    revalidate: 10, // enable ISR
   };
 };
 

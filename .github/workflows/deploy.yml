@@ -1,4 +1,4 @@
-name: Deploy to AWS Lightsail
+name: Deploy to Vercel
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - deploy
 
 jobs:
-  deploy:
+  deploy-to-vercel:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,22 +24,12 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to Staging server
-        uses: easingthemes/ssh-deploy@main
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: '-rlgoDzvc -i'
-          SOURCE: './'
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
-          SCRIPT_BEFORE: |
-            whoami
-            ls -al
-            cd ${{ secrets.REMOTE_TARGET }} || exit 1
-            pm2 stop all || true
-          SCRIPT_AFTER: |
-            cd ${{ secrets.REMOTE_TARGET }} || exit 1
-            npm run start
-            pm2 restart all || pm2 start npm --name "your-app" -- start
-            pm2 save
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./
+          vercel-args: '--prod'
