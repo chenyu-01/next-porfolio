@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It is a portfolio website for myself. It is a work in progress and will be updated as I learn more about web development.
+
+## Technologies Used
+
+Next.js, React, Tailwind CSS, and Vercel. The website is hosted on Vercel. Tailwind CSS and Shadcn is used for styling the website. Next.js is used for server-side rendering and routing. Most of pages are using static site generation, for example, the blogs and projects pages.
 
 ## Getting Started
 
@@ -15,10 +19,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 

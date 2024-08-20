@@ -15,7 +15,7 @@ const allLinks = [
     text: 'Home',
   },
   {
-    id: 'posts/about',
+    id: 'about',
     text: 'About',
   },
   {
