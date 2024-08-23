@@ -60,11 +60,15 @@ const AboutPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Heart className="mr-2" /> Interests
+              <Heart className="mr-2" /> Tech & Skills
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p>When I&apos;m not coding, I enjoy [Your Interests/Hobbies].</p>
+            <p>
+              I have experience with HTML, CSS, JavaScript, React, Node.js, Git
+              in School. During internship, I have worked on Nuxt.js. This
+              website is built with Next.js and Tailwind CSS.
+            </p>
           </CardContent>
         </Card>
       </div>
