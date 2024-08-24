@@ -16,7 +16,7 @@ export default function ProjectsList({ repos }: ProjectsListProps) {
             className="my-2 rounded-sm border p-2 font-mono hover:border-green-200 hover:bg-green-50 dark:hover:bg-black"
           >
             <Link href={repo.html_url}>
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center justify-between text-lg">
                 <div className="font-semibold">{repo.name}</div>
                 <div className="flex flex-col justify-end">
                   <p className="self-end">{repo.stargazers_count} ⭐</p>

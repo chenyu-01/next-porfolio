@@ -3,9 +3,9 @@ import Image from 'next/image';
 
 const Page = () => {
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen p-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="rounded-lg bg-white p-6 font-bold shadow-md">
+        <div className="rounded-lg p-6 font-bold shadow-lg">
           <h1 className="mb-4 text-4xl">
             Hi, I am a Frontend Developer With Vue, React and Typescript
           </h1>
