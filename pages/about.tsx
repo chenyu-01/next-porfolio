@@ -15,6 +15,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
+import Link from 'next/link';
 
 const skills = [
   'HTML',
@@ -141,7 +142,7 @@ const AboutPage: React.FC = () => {
                           {skills.map((skill, skillIndex) => (
                             <span
                               key={skillIndex}
-                              className="rounded-full bg-blue-500 px-2 py-1 text-sm text-white"
+                              className="rounded-full bg-blue-500 px-2 py-1 text-sm text-white dark:bg-slate-700"
                             >
                               {skill}
                             </span>
@@ -154,15 +155,36 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
             <div className="flex justify-between px-4 pb-4">
-              <Button onClick={clickPrevSlide} variant="outline" size="icon">
+              <Button onClick={clickPrevSlide} variant="ghost" size="icon">
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              <Button onClick={clickNextSlide} variant="outline" size="icon">
+              <Button onClick={clickNextSlide} variant="ghost" size="icon">
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
           </Card>
         </div>
+      </div>
+      <div className="space-y-4">
+        <h2 className="text-3xl font-bold">Contact Me</h2>
+        <p>
+          Feel free to reach out to me at{' '}
+          <Link
+            href="mailto:e1221685@u.nus.edu"
+            className="text-blue-500 hover:underline dark:text-green-300"
+          >
+            e1221685@u.nus.edu
+          </Link>
+        </p>
+        <p>
+          You can also find me on{' '}
+          <Link
+            href="www.linkedin.com/in/yu-chen-2a4110290"
+            className="text-blue-500 hover:underline dark:text-green-300"
+          >
+            LinkedIn
+          </Link>
+        </p>
       </div>
     </div>
   );
