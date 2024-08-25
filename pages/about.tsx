@@ -23,7 +23,8 @@ const skills = [
   'JavaScript',
   'TypeScript',
   'React',
-  'Node.js',
+  'Vite',
+  'Vue.js',
   'Git',
   'Nuxt.js',
   'Next.js',
@@ -85,7 +86,7 @@ const AboutPage: React.FC = () => {
       title: 'Personal Info',
       icon: <User className="mr-2" />,
       content:
-        "Hi, my name is Chen Yu. I'm a passionate web developer with a keen interest in creating beautiful and functional websites.",
+        "Hi, my name is Chen Yu. I'm a passionate web developer with a keen interest in creating interactive and user-friendly web applications.",
     },
     {
       title: 'Work Experience',

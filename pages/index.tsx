@@ -37,6 +37,19 @@ const Page = () => {
           </div>
         </div>
       </div>
+      <div className="mt-8 rounded-lg p-6 shadow-md">
+        <h2 className="mb-4 text-3xl font-bold">Skills</h2>
+        <ul className="list-disc space-y-2 pl-5">
+          <li>JavaScript (ES6+)</li>
+          <li>TypeScript</li>
+          <li>React.js</li>
+          <li>Vue.js</li>
+          <li>HTML & CSS</li>
+          <li>Responsive Design</li>
+          <li>Git & GitHub</li>
+          <li>RESTful APIs</li>
+        </ul>
+      </div>
     </div>
   );
 };
