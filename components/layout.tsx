@@ -1,56 +1,40 @@
+import React, { useState } from 'react';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Inter as FontSans } from 'next/font/google';
-import { Input } from '@/components/ui/input';
 import { ModeToggle } from '@/components/ThemeModeToggle';
 import { useRouter } from 'next/router';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import allLinks from '@/lib/menuLinks';
+import MobileMenu from './MobileMenu';
+import GithubIcon from '@/components/GithubIcon';
+
 const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
 });
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
-
-const allLinks = [
-  {
-    id: '',
-    text: 'Home',
-  },
-  {
-    id: 'about',
-    text: 'About',
-  },
-  {
-    id: 'projects',
-    text: 'Projects',
-  },
-  {
-    id: 'posts',
-    text: 'Blog',
-  },
-];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const [showMenu, setShowMenu] = useState(false);
 
+  const toggleMenu = (show: boolean) => {
+    setShowMenu(show);
+  };
+  const revertMenu = () => {
+    setShowMenu((prevState) => (prevState = !prevState));
+  };
   return (
-    <div
-      className={cn(
-        'container flex max-w-7xl flex-col text-2xl',
-        fontSans.variable
-      )}
-    >
+    <div className={cn('flex max-w-7xl flex-col text-2xl', fontSans.variable)}>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
         enableSystem
         disableTransitionOnChange
       >
-        <header className="sticky top-0 flex w-full items-center justify-between bg-gray-200 px-5 dark:bg-gray-700 sm:font-semibold md:static md:bg-inherit md:dark:bg-inherit">
+        <header className="sticky top-0 flex w-full items-center justify-between bg-background px-5 shadow-md sm:font-semibold md:static md:bg-inherit md:dark:bg-inherit">
           <nav>
-            <ul className="flex items-center">
-              <Link href={'/'} className="menu-hover mr-12 p-5">
-                Chen Yu
-              </Link>
+            <ul className="hidden items-center md:flex">
               {allLinks.map((link) => (
                 <li key={link.id}>
                   <Link
@@ -67,15 +51,30 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               ))}
             </ul>
           </nav>
-          <div className="flex items-center justify-between">
-            <Input
-              className="w-50 mr-2 bg-card"
-              placeholder="Search"
-              type="search"
-            />
+          <div className="flex items-center">
+            <Link href={'https://github.com/chenyu-01'} className="p-5">
+              <GithubIcon />
+            </Link>
             <ModeToggle />
+            <button className="ml-4 block md:hidden" onClick={revertMenu}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
           </div>
         </header>
+        <MobileMenu showMenu={showMenu} toggleMenu={toggleMenu} />
         <main className="container">{children}</main>
         <footer className="flex justify-center">
           <p>&copy; {new Date().getFullYear()} Chen Yu&apos;s Portfolio</p>

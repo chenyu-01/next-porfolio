@@ -14,7 +14,14 @@ import {
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
-
+  const clickTheme = (
+    theme: string,
+    events: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    events.preventDefault();
+    events.stopPropagation();
+    setTheme(theme);
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,13 +32,13 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>
+        <DropdownMenuItem onClick={(e) => clickTheme('light', e)}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>
+        <DropdownMenuItem onClick={(e) => clickTheme('dark', e)}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>
+        <DropdownMenuItem onClick={(e) => clickTheme('system', e)}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
