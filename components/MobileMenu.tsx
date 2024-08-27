@@ -33,10 +33,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ showMenu, toggleMenu }) => {
   };
 
   return (
-    <nav className="z-10">
+    <nav className="visible z-30 md:invisible">
       <ul
         className={cn(
-          'fixed left-0 top-0 h-full w-2/3 transform p-5 backdrop-blur-lg transition-transform duration-300 ease-in-out dark:bg-gray-800',
+          'fixed left-0 top-0 h-full w-2/3 transform backdrop-blur-lg transition-transform duration-300 ease-in-out dark:bg-gray-800 md:w-[45%]',
           showMenu ? 'translate-x-0' : '-translate-x-full'
         )}
         onTouchStart={handleTouchStart}
@@ -51,7 +51,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ showMenu, toggleMenu }) => {
             <li key={link.id} className="mb-4">
               <Link
                 className={cn(
-                  'block rounded-md p-3 text-xl hover:bg-green-200 dark:hover:bg-gray-700',
+                  'block rounded-md px-8 py-4 text-xl hover:bg-green-200 dark:hover:bg-gray-700',
                   router.pathname === `/${link.id}` &&
                     'bg-violet-200 dark:bg-gray-700'
                 )}

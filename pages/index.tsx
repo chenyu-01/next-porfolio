@@ -1,12 +1,15 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import ReactIcon from '@/public/images/react.svg';
+import VueIcon from '@/public/images/vue.svg';
+import TypeScriptIcon from '@/public/images/typescript.svg';
 
 const Page = () => {
   return (
     <div className="min-h-screen p-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="rounded-lg p-6 font-bold shadow-lg">
-          <h1 className="mb-4 text-4xl">
+          <h1 className="mb-4 md:text-4xl">
             Hi, I am a Frontend Developer With Vue, React and Typescript
           </h1>
           <div className="flex space-x-4">
@@ -14,32 +17,27 @@ const Page = () => {
             <Button>Resume</Button>
           </div>
         </div>
-        <div className="flex items-center justify-center rounded-lg p-6">
-          <div className="flex flex-wrap space-x-4 space-y-4">
-            <Image
-              src="/images/typescript.svg"
-              alt="TypeScript"
-              width={128}
-              height={128}
-            />
-            <Image
-              src="/images/react.svg"
-              alt="React.js"
-              width={128}
-              height={128}
-            />
-            <Image
-              src="/images/vue.svg"
-              alt="Vue.js"
-              width={128}
-              height={128}
-            />
+        <div className="hidden items-center justify-center rounded-lg p-6 sm:mx-20 sm:flex md:mx-0">
+          <div className="grid w-full grid-cols-3 gap-4">
+            {[
+              { icon: TypeScriptIcon, alt: 'TypeScript' },
+              { icon: ReactIcon, alt: 'React.js' },
+              { icon: VueIcon, alt: 'Vue.js' },
+            ].map(({ icon, alt }, index) => (
+              <div key={index} className="aspect-square w-full">
+                <Image
+                  src={icon}
+                  alt={alt}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
       <div className="mt-8 rounded-lg p-6 shadow-md">
-        <h2 className="mb-4 text-3xl font-bold">Skills</h2>
-        <ul className="list-disc space-y-2 pl-5">
+        <h2 className="mb-4 font-bold md:text-3xl">Skills</h2>
+        <ul className="list-disc space-y-2 pl-5 text-sm md:text-xl">
           <li>JavaScript (ES6+)</li>
           <li>TypeScript</li>
           <li>React.js</li>
