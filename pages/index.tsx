@@ -6,7 +6,7 @@ import TypeScriptIcon from '@/public/images/typescript.svg';
 const skills = [
   'HTML',
   'CSS',
-  'JavaScript',
+  'JavaScript(ES6+)',
   'TypeScript',
   'React',
   'Vite',
@@ -15,6 +15,8 @@ const skills = [
   'Nuxt.js',
   'Next.js',
   'Tailwind CSS',
+  'RESTful APIs',
+  'Responsive Design',
 ];
 const Page = () => {
   return (
@@ -47,18 +49,29 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="mt-8 rounded-lg p-6 shadow-xl">
-        <h2 className="mb-4 font-bold md:text-3xl">Skills</h2>
-        <ul className="list-disc space-y-2 pl-5 text-sm md:text-xl">
-          <li>JavaScript (ES6+)</li>
-          <li>TypeScript</li>
-          <li>React.js</li>
-          <li>Vue.js</li>
-          <li>HTML & CSS</li>
-          <li>Responsive Design</li>
-          <li>Git & GitHub</li>
-          <li>RESTful APIs</li>
+      <div className="rounded-lg p-6 shadow-xl">
+        <h2 className="my-8 text-4xl font-bold md:text-3xl">Skills</h2>
+        <p className="my-4">
+          I have experience with various technologies and frameworks. Here are
+          some of the skills that I have:
+        </p>
+        <ul className="grid list-disc grid-cols-1 gap-4 space-y-2 pl-5 text-sm md:grid-cols-2 md:text-xl">
+          {skills.map((skill, index) => (
+            <li key={index}>{skill}</li>
+          ))}
         </ul>
+        {skills.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {skills.map((skill, skillIndex) => (
+              <span
+                key={skillIndex}
+                className="rounded-full bg-blue-500 px-2 py-1 text-sm text-white dark:bg-slate-700"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

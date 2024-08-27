@@ -32,7 +32,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ showMenu, toggleMenu }) => {
   };
 
   return (
-    <nav className="visible z-30 md:invisible">
+    <nav className="visible z-30 lg:invisible">
       <ul
         className={cn(
           'fixed left-0 top-0 h-full w-2/3 transform backdrop-blur-lg transition-transform duration-300 ease-in-out dark:bg-gray-800 md:w-[45%]',

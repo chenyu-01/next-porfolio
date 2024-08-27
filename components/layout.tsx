@@ -50,7 +50,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           disableTransitionOnChange
         >
           <div className="grid grid-cols-1 gap-4 px-5">
-            <header className="flex w-full items-center justify-between bg-background sm:font-semibold md:dark:bg-inherit">
+            <header className="flex w-full items-center justify-between bg-background sm:font-semibold md:h-32 md:dark:bg-inherit lg:h-24">
               <nav>
                 <ul className="hidden items-center lg:flex">
                   {allLinks.map((link) => (
