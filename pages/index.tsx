@@ -3,7 +3,19 @@ import Image from 'next/image';
 import ReactIcon from '@/public/images/react.svg';
 import VueIcon from '@/public/images/vue.svg';
 import TypeScriptIcon from '@/public/images/typescript.svg';
-
+const skills = [
+  'HTML',
+  'CSS',
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'Vite',
+  'Vue.js',
+  'Git',
+  'Nuxt.js',
+  'Next.js',
+  'Tailwind CSS',
+];
 const Page = () => {
   return (
     <div className="min-h-screen p-4">
@@ -35,7 +47,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="mt-8 rounded-lg p-6 shadow-md">
+      <div className="mt-8 rounded-lg p-6 shadow-xl">
         <h2 className="mb-4 font-bold md:text-3xl">Skills</h2>
         <ul className="list-disc space-y-2 pl-5 text-sm md:text-xl">
           <li>JavaScript (ES6+)</li>

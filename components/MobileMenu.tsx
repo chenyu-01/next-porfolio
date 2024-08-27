@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import allLinks from '@/lib/menuLinks';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 
 interface MobileMenuProps {
   showMenu: boolean;
