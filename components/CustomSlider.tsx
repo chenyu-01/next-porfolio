@@ -105,11 +105,13 @@ export default function CustomSlider({
   }, [isTabVisible, nextSlide, isClicked]);
   return (
     <div>
-      <div>{renderSlides(children, currentSlide, className)}</div>
-      <div className="hidden justify-between px-4 pb-4 md:flex">
+      <div className="flex items-center justify-between space-x-2">
         <Button onClick={clickPrevSlide} variant="ghost" size="icon">
           <ChevronLeft className="h-4 w-4" />
         </Button>
+        <div className="w-full">
+          {renderSlides(children, currentSlide, className)}
+        </div>
         <Button onClick={clickNextSlide} variant="ghost" size="icon">
           <ChevronRight className="h-4 w-4" />
         </Button>

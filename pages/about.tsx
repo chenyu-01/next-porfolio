@@ -62,26 +62,28 @@ const AboutPage: React.FC = () => {
           </CustomSlider>
         </div>
       </div>
-      <div className="space-y-4 p-2">
-        <h2 className="text-3xl font-bold">Contact Me</h2>
-        <p className="break-words">
-          <span className="font-semibold">Email:</span>{' '}
-          <Link
-            href="mailto:e1221685@u.nus.edu"
-            className="text-blue-500 hover:underline dark:text-green-300"
-          >
-            e1221685@u.nus.edu
-          </Link>
-        </p>
-        <p>
-          You can also find me on{' '}
-          <Link
-            href="www.linkedin.com/in/yu-chen-2a4110290"
-            className="text-blue-500 hover:underline dark:text-green-300"
-          >
-            LinkedIn
-          </Link>
-        </p>
+      <div className="flex w-full items-center p-10">
+        <div className="space-y-4">
+          <h2 className="text-3xl font-bold">Contact Me</h2>
+          <p className="break-words">
+            <span className="font-semibold">Email:</span>{' '}
+            <Link
+              href="mailto:e1221685@u.nus.edu"
+              className="text-blue-500 hover:underline dark:text-green-300"
+            >
+              e1221685@u.nus.edu
+            </Link>
+          </p>
+          <p>
+            You can also find me on{' '}
+            <Link
+              href="www.linkedin.com/in/yu-chen-2a4110290"
+              className="text-blue-500 hover:underline dark:text-green-300"
+            >
+              LinkedIn
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
