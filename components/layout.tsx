@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div>
       <Head>
         <title>Chen Yu&apos;s Portfolio</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <meta
           name="description"
           content="Chen Yu's Portfolio, a software engineer based in Toronto, Canada."
