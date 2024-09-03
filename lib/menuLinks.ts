@@ -8,10 +8,6 @@ const allLinks = [
     text: 'About',
   },
   {
-    id: 'projects',
-    text: 'Projects',
-  },
-  {
     id: 'posts',
     text: 'Blog',
   },
