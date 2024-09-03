@@ -13,25 +13,8 @@ interface TableOfContentsProps {
   toc: TOCItem[];
 }
 const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
-  // currentId is the id of the heading that is currently in view
   const [currentId, setCurrentId] = React.useState<string | null>(null);
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           setCurrentId(entry.target.id);
-  //         }
-  //       });
-  //     },
-  //     { rootMargin: '0% 0% -80% 0%' }
-  //   );
-  //   const headings = Array.from(document.querySelectorAll('h1, h2, h3'));
-  //   headings.forEach((heading) => observer.observe(heading));
-  //   return () => {
-  //     headings.forEach((heading) => observer.unobserve(heading));
-  //   };
-  // }, []);
+
   const renderTOCItems = (items: TOCItem[]) => {
     return (
       <ul>
@@ -40,10 +23,13 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
             <Link
               href={`#${item.id}`}
               onClick={() => setCurrentId(item.id)}
-              className={clsx({
-                'text-primary': currentId === item.id,
-                'font-bold': currentId === item.id,
-              })}
+              className={clsx(
+                {
+                  'text-primary': currentId === item.id,
+                  'font-bold': currentId === item.id,
+                },
+                'text-lg'
+              )}
               style={{ paddingLeft: `${item.level * 1}rem` }}
             >
               {item.title}
@@ -57,7 +43,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
 
   return (
     <aside className="col-span-2 hidden md:block">
-      <div className="sticky top-8 rounded-xl bg-card p-4">
+      <div className="rounded-xl bg-card p-4">
         <p className="mb-2 text-2xl font-semibold">In this Article</p>
         <nav className="toc">{renderTOCItems(toc)}</nav>
       </div>
