@@ -45,13 +45,9 @@ const Page = ({ schoolProjects, otherProjects }: ProjectsListProps) => {
     <div className="min-h-screen p-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="rounded-lg p-6 font-bold shadow-lg">
-          <h1 className="mb-4 text-3xl md:text-4xl">
+          <h1 className="mb-4 text-4xl md:text-5xl">
             Hi, I am a Full Stack Developer With Vue, React and Java Spring Boot
           </h1>
-          <div className="flex space-x-4">
-            <Button variant={'outline'}>Certificates</Button>
-            <Button>Resume</Button>
-          </div>
         </div>
         <div className="hidden items-center justify-center rounded-lg p-6 sm:mx-20 sm:flex md:mx-0">
           <div className="grid w-full grid-cols-3 gap-4">

@@ -43,8 +43,8 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
 
   return (
     <aside className="col-span-2 hidden md:block">
-      <div className="rounded-xl bg-card p-4">
-        <p className="mb-2 text-2xl font-semibold">In this Article</p>
+      <div className="rounded-xl border p-4 dark:bg-card">
+        <p className="mb-2 text-2xl font-semibold">Table of Contents</p>
         <nav className="toc">{renderTOCItems(toc)}</nav>
       </div>
     </aside>

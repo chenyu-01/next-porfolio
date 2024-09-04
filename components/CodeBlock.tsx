@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
-  duotoneDark,
   duotoneLight,
+  materialLight,
+  atomDark,
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import CopyButton from '@/components/CopyButton';
 
@@ -41,7 +42,7 @@ function CodeBlock({
         language={language}
         wrapLongLines
         className="not-prose rounded"
-        style={isDark ? duotoneDark : duotoneLight}
+        style={isDark ? atomDark : materialLight}
         customStyle={{
           margin: 0,
         }}
