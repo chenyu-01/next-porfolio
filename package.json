@@ -5,8 +5,9 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3250",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
