@@ -44,7 +44,7 @@ const Page = ({ schoolProjects, otherProjects }: ProjectsListProps) => {
   return (
     <div className="min-h-screen p-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="rounded-lg p-6 font-bold shadow-lg">
+        <div className="rounded-lg bg-primary p-6 font-bold shadow-lg">
           <h1 className="mb-4 text-4xl md:text-5xl">
             Hi, I am a Full Stack Developer With Vue, React and Java Spring Boot
           </h1>
