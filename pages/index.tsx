@@ -44,9 +44,10 @@ const Page = ({ schoolProjects, otherProjects }: ProjectsListProps) => {
   return (
     <div className="min-h-screen p-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="rounded-lg p-6 font-bold shadow-lg">
+        <div className="rounded-lg p-6 font-[500] shadow-lg">
           <h1 className="mb-4 text-4xl md:text-5xl">
-            Hi, I am a Full Stack Developer With Vue, React and Java Spring Boot
+            Hi, my name is <span className="font-bold">Chen Yu</span>, a
+            software engineering master student.
           </h1>
         </div>
         <div className="hidden items-center justify-center rounded-lg p-6 sm:mx-20 sm:flex md:mx-0">
