@@ -14,16 +14,20 @@ import {
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
-  const clickTheme = (
-    theme: string,
-    events: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    events.preventDefault();
-    events.stopPropagation();
-    setTheme(theme);
-  };
+  const [open, setOpen] = React.useState(false);
+
+  const clickTheme = React.useCallback(
+    (theme: string, events: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      events.preventDefault();
+      events.stopPropagation();
+      setTheme(theme);
+      setOpen(false);
+    },
+    [setTheme]
+  );
+
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
