@@ -31,14 +31,14 @@ export async function getProjects(): Promise<{
 
   // Filter and sort repos
   const schoolProjects = allRepos
-    .filter((repo) => !repo.fork && repo.topics.includes('school-project'))
+    .filter((repo) => repo.topics.includes('school-project'))
     .sort(
       (a, b) =>
         new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
     );
 
   const otherProjects = allRepos
-    .filter((repo) => !repo.fork && !repo.topics.includes('school-project'))
+    .filter((repo) => !repo.topics.includes('school-project'))
     .sort(
       (a, b) =>
         new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
